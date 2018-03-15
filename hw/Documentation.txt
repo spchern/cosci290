@@ -1,0 +1,20 @@
+Shipeng Chen
+Co Sci 290
+Homework 2
+
+
+Write a list of objects/classes you would use in your text adventure.
+For example, if you were writing a Zombie-based adventure, your list of objects would be: Zombie, Weapon, Food, etc.
+Turn this in as a text file called Documentation and push it to your github.
+
+Room Escape
+
+Objects/Classes:
+
+- Combination Lock
+- Conventional Locks and Keys
+- Books
+- Telephone
+- Bricks
+- Window
+- Door
