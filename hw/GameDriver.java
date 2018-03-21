@@ -5,16 +5,20 @@
   Homework 1
 */
 
+import java.util.ArrayList;
 import java.util.Scanner;
 public class GameDriver{
   public static void main(String[] args){
 
     //variables
     Scanner input = new Scanner(System.in);
-    String name = "";
+    List<Object> name = new ArrayList<>();
+    //String name = "";
     int age = 0;
-    String city = "";
-    String itemName = "";
+    List<Object> city = new ArrayList<>();
+    //String city = "";
+    List<Object> itemList = new ArrayList<>();
+    //String itemName = "";
     int randomNum = 0;
     int maximum = 144;
     int minimum = 1;
@@ -35,18 +39,19 @@ public class GameDriver{
     System.out.println("You're trying to recall things and figure it out... \n");
 
     System.out.println("\nHi, give me your name: ");
-    name = input.next();
+    name.add(input.nextLine());
     System.out.println("\nHi " + name + "!");
     System.out.println("\nHow old are you?");
     age = input.nextInt();
     System.out.println("\nYou are " + age + " years old!");
     System.out.println("\nWhich city do you live in?");
-    city = input.next();
+    city.add(input.nextLine());
     System.out.println("\nOK, you live in " + city + ".");
-    System.out.println("\nList one item you want to have:");
-    itemName = input.next();
-
-    System.out.println("\nYou found " + itemName + " in your backpack.");
+    System.out.println("\nList some items you hope to find in this room:");
+    itemList.add(input.nextLine());
+    
+    
+    System.out.println("\nYou found " + itemList + " in this room.");
 
     randomNum = minimum + (int)(Math.random() * maximum);
 
