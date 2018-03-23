@@ -9,22 +9,24 @@ public class Lab10{
   public static void main(String[] args){
     
     Scanner input = new Scanner(System.in);
-    List<Double> array = Arrays.asList();
+    double[] array = new double[10];
     //List<double> array = new ArrayList<double>();
     
     System.out.println("Give 10 doubles, separated by spaces");
        
-    userInput = input.nextLine();
-    userInput2 =  userInput.asList(userInput.split("\\s"));
+    String userInput = input.nextLine();
+    String[] userInput2 =  userInput.split("\\s");
     
     for(int i=0; i<userInput2.length; i++) {
-    double value = Double.parseDouble(userInput[i]);
-    array.add(value);
+    double value = Double.parseDouble(userInput2[i]);
+    array[i] = value;
     }
+    
+    System.out.println("The average is " + average(array));
   }
-}
+
   
-   /*
+
   public static int average(int[] array){
     int sum = 0;
     for(int i = 0; i < array.length; i++){
@@ -32,7 +34,7 @@ public class Lab10{
     }
     int average = (int)(sum / array.length);
     return average;
-  }
+  } 
 
   public static double average(double[] array){
     double sum = 0;
@@ -41,8 +43,7 @@ public class Lab10{
     }
     double average = sum / array.length;
     return average;
-  } */
-    
+  } 
 
+}
 
-//https://stackoverflow.com/questions/14635136/read-integers-separated-with-whitespace-into-int-array

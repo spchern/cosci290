@@ -18,3 +18,14 @@ Objects/Classes:
 - Bricks
 - Window
 - Door
+
+
+Summary
+
+This is a room escaping game. The player is trapped in a room somehow and will need to find a way to
+escape from it. The player will find some items in the room that may help him/her escape the room.
+Possible ways are:
+  - find something to break the window (low possibility)
+  - find the key/passcode combination to unlock the door
+  - and some other ways...
+  
