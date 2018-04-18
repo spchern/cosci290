@@ -5,70 +5,82 @@
   Homework 1
 */
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
+import java.nio.*;
+import java.util.*;
+
 public class GameDriver{
   public static void main(String[] args){
+    List<String> list = new ArrayList<String>();
+    try {
+        String encoding = "ASCII";
+        File file = new File("./Story.txt");
+        if (file.isFile() && file.exists()) {
+            InputStreamReader read = new InputStreamReader(new FileInputStream(file), encoding);
+            BufferedReader bufferedReader = new BufferedReader(read);
+            String lineText = null;
 
+            while ((lineText = bufferedReader.readLine()) != null) {
+                list.add(lineText);
+            }
+            bufferedReader.close();
+            read.close();
+        }
+        else {
+            System.out.println("Can't find file");
+        }
+    }
+    catch (Exception e) {
+        System.out.println("Read file error");
+        e.printStackTrace();
+    }
+    
     //variables
-    Scanner input = new Scanner(System.in);
+    Scanner userInput = new Scanner(System.in);
     List<Object> name = new ArrayList<>();
     //String name = "";
     int age = 0;
     List<Object> city = new ArrayList<>();
     //String city = "";
     List<Object> itemList = new ArrayList<>();
-    //String itemName = "";
-    int randomNum = 0;
-    int maximum = 144;
-    int minimum = 1;
 
 
 
     //splash screen
-    System.out.println(" __________                      ___________                                      \n "
-                +      "\\______   \\ ____   ____   _____ \\_   _____/ ______ ____ _____  ______   ____    \n "
-                +      " |       _//  _ \\ /  _ \\ /     \\ |    __)_ /  ___// ___\\\\__  \\ \\____ \\_/ __ \\   \n "
-                +      " |    |   (  <_> |  <_> )  Y Y  \\|        \\\\___ \\\\  \\___ / __ \\|  |_> >  ___/   \n "
-                +      " |____|_  /\\____/ \\____/|__|_|  /_______  /____  >\\___  >____  /   __/ \\___  >  \n "
-                +      "        \\/                    \\/        \\/     \\/     \\/     \\/|__|        \\/      \n"
-);
-  // story setup
-    System.out.println("You just woke up in a small dark room... \n");
-    System.out.println("You don't remember what happened or why you are here... \n");
-    System.out.println("You're trying to recall things and figure it out... \n");
-
-    System.out.println("\nHi, give me your name: ");
-    name.add(input.nextLine());
-    System.out.println("\nHi " + name + "!");
-    System.out.println("\nHow old are you?");
-    age = input.nextInt();
-    System.out.println("\nYou are " + age + " years old!");
-    System.out.println("\nWhich city do you live in?");
-    city.add(input.nextLine());
-    System.out.println("\nOK, you live in " + city + ".");
-    System.out.println("\nList some items you hope to find in this room:");
-    itemList.add(input.nextLine());
+    SplashScreen startss = new SplashScreen();
+    startss.welcome();
     
+    //story setup
+
+    System.out.println(list.get(0) + "\n");
+    System.out.println(list.get(1) + "\n");
+    System.out.println(list.get(2) + "\n");
     
-    System.out.println("\nYou found " + itemList + " in this room.");
+    //ask name
+    System.out.println("\n" + list.get(4));
+    name.add(userInput.nextLine());
+    System.out.println("\n" + list.get(5) + name + list.get(6));
+    //ask age
+    System.out.println("\n" + list.get(7));
+    age = userInput.nextInt();
+    System.out.println("\n" + list.get(8) + age + list.get(9));
+    //ask city
+    System.out.println("\n" + list.get(10));
+    city.add(userInput.nextLine());
+    System.out.println("\n" + list.get(11) + city + list.get(12));
+    //ask wishlist
+    System.out.println("\n" + list.get(13));
+    itemList.add(userInput.nextLine());
+    System.out.println("\n" + list.get(14) + itemList + list.get(15));
 
-    randomNum = minimum + (int)(Math.random() * maximum);
+    //random result
+    Utility playerStatus = new Utility();
+    playerStatus.isAlive();
+    
+    //splash screen end
+    SplashScreen endss = new SplashScreen();
+    endss.bye();
 
-    if(randomNum < 72){
-      System.out.println("\nAfter waiting for " + randomNum + " hours, your best friend came and saved you out from your neighbor's garage.");
-    }
-    else{
-      System.out.println("\nAfter waiting for " + (int)(randomNum / 24 + 1) + " days and you haven't had any food or water, you died. ");
-    }
-    System.out.println();
-    System.out.println(   "   ________                        ________                     \n"
-                  +       "  /  _____/_____    _____   ____   \\_____  \\___  __ ___________\n"
-                  +       " /   \\  ___\\__  \\  /     \\_/ __ \\   /   |   \\  \\/ // __ \\_  __ \\\n"
-                  +       " \\    \\_\\  \\/ __ \\|  Y Y  \\  ___/  /    |    \\   /\\  ___/|  | \\/\n"
-                  +       "  \\______  (____  /__|_|  /\\___  > \\_______  /\\_/  \\___  >__|   \n"
-                  +       "         \\/     \\/      \\/     \\/          \\/          \\/       \n"
-    );
-  //  Scanner input = new Scanner(System.in);
+
   }
 }
