@@ -1,86 +1,69 @@
 /*
   Shipeng Chen
   Co Sci 290
-  Feb 20, 2018
-  Homework 1
+  Updated April 19, 2018
+  Homework 1 / Lab 14
 */
 
-import java.io.*;
-import java.nio.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class GameDriver{
   public static void main(String[] args){
-    List<String> list = new ArrayList<String>();
-    try {
-        String encoding = "ASCII";
-        File file = new File("./Story.txt");
-        if (file.isFile() && file.exists()) {
-            InputStreamReader read = new InputStreamReader(new FileInputStream(file), encoding);
-            BufferedReader bufferedReader = new BufferedReader(read);
-            String lineText = null;
-
-            while ((lineText = bufferedReader.readLine()) != null) {
-                list.add(lineText);
-            }
-            bufferedReader.close();
-            read.close();
-        }
-        else {
-            System.out.println("Can't find file");
-        }
-    }
-    catch (Exception e) {
-        System.out.println("Read file error");
-        e.printStackTrace();
-    }
     
-    //variables
+    
+    Utility utility = new Utility();
     Scanner userInput = new Scanner(System.in);
-    List<Object> name = new ArrayList<>();
-    //String name = "";
-    int age = 0;
-    List<Object> city = new ArrayList<>();
-    //String city = "";
-    List<Object> itemList = new ArrayList<>();
-
+    
+    //User input variables
+    String name;
+    int age;
+    String ageAsString;
+    String city;
+    String wishItem;
 
 
     //splash screen
-    SplashScreen startss = new SplashScreen();
-    startss.welcome();
+    SplashScreen splash = new SplashScreen();
+    splash.welcome();
     
     //story setup
 
-    System.out.println(list.get(0) + "\n");
-    System.out.println(list.get(1) + "\n");
-    System.out.println(list.get(2) + "\n");
+    utility.readFile("Story.txt");
     
     //ask name
-    System.out.println("\n" + list.get(4));
-    name.add(userInput.nextLine());
-    System.out.println("\n" + list.get(5) + name + list.get(6));
+    System.out.println("\nHi, give me your name: ");
+    name = userInput.nextLine();
+    utility.writeFile("PlayerProfile.txt",name);
+    System.out.println("\nHi " + name +"!");
     //ask age
-    System.out.println("\n" + list.get(7));
-    age = userInput.nextInt();
-    System.out.println("\n" + list.get(8) + age + list.get(9));
+    System.out.println("\nHow old are you?");
+    ageAsString = userInput.next();
+    age = Integer.parseInt(ageAsString);
+    utility.writeFile("PlayerAge.txt",ageAsString);
+    System.out.println("\nYou are " + age + " years old!");
     //ask city
-    System.out.println("\n" + list.get(10));
-    city.add(userInput.nextLine());
-    System.out.println("\n" + list.get(11) + city + list.get(12));
+    System.out.println("\nWhich city do you live in?");
+    city = userInput.nextLine();
+    utility.writeFile("PlayerCity.txt",city);
+    System.out.println("\nOK, you live in "+ city + ".");
     //ask wishlist
-    System.out.println("\n" + list.get(13));
-    itemList.add(userInput.nextLine());
-    System.out.println("\n" + list.get(14) + itemList + list.get(15));
-
+    System.out.println("\nList some items you hope to find in this room: ");
+    wishItem = userInput.nextLine();
+    utility.writeFile("PlayerWishlist.txt",wishItem);
+    
+    if(Math.random() > 0.5){
+      System.out.println("\nGreat! You found " + wishItem + " in this room");
+    }
+    else{
+      System.out.println("\nSorry, no " + wishItem + " found in this room.");
+    }
+    
     //random result
-    Utility playerStatus = new Utility();
-    playerStatus.isAlive();
+
+    utility.isAlive();
     
     //splash screen end
-    SplashScreen endss = new SplashScreen();
-    endss.bye();
-
+    splash.bye();
 
   }
 }
