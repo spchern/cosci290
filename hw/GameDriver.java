@@ -79,15 +79,21 @@ public class GameDriver{
                       "\nFor example, enter 1-1 to go to the upper left block.");
     
     //userMove = userInput.next();
+    int stepCount = 10;
     do{
       map.goTo();
       map.currentLoc();
       player.setLoc(map.getX(), map.getY());
-    }while(map.checkExit());
+      stepCount = stepCount - 1;
+    }while(map.checkExit() && stepCount >=0 );
     
-    //random result
-
+    //final result
+    if(stepCount >= 0){
+      System.out.println("Congratulations! You escaped from the room.");
+    }
+    else{
     utility.isAlive();
+    }
     
     //splash screen end
     splash.bye();

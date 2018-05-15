@@ -47,9 +47,11 @@ public class Map{
 
   public boolean checkExit(){
     if(x == exitX && y == exitY){
+      System.out.println("You found the exit!");
       return false;
     }
     else{
+      System.out.println("There's nothing here.");
       return true;
     }
   }
