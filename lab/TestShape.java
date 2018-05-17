@@ -6,8 +6,8 @@ public class TestShape{
     
     System.out.println(a);
     
-    a.setArea(3.0);
-      
-    System.out.println(a);
+    Square b = new Square();
+    
+    System.out.println(b);
   }
 }

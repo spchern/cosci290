@@ -4,7 +4,7 @@
    */
 
 public class Circle extends Shape{
-  private double area;
+  //private double area;
   private double radius;
   
   public Circle (){
@@ -17,11 +17,11 @@ public class Circle extends Shape{
   }
   
   public String toString(){
-    return "The area of the shape is " + this.area;
+    return "The area of the shape is " + super.getArea();
   }
   
   @Override
-  public void computeArea(){
-    this.area = Math.pow(radius, 2) * Math.PI;
+  public double computeArea(){
+    return Math.pow(radius, 2) * Math.PI;
   } 
 }
